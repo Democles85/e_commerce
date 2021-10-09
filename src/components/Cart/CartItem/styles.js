@@ -5,7 +5,7 @@ export default makeStyles(() => ({
     height: 260,
   },
   cardContent: {
-    display: 'flex',
+    display: 'absolute',
     justifyContent: 'space-between',
   },
   cartActions: {
@@ -15,4 +15,11 @@ export default makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
   },
+  itemName: {
+    fontSize: '20px',
+    display: 'flex',
+  },
+  itemCost: {
+    fontSize: '16px',
+  }
 }));

@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { commerce } from './lib/commerce';
-import { Products, Navbar, Cart, Checkout } from './components';
+import { Products, Navbar, Cart, Checkout} from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import 'rc-footer/assets/index.css';
+import Footer from 'rc-footer';
 
 const App = () => {
     const [products, setProducts] = useState([]);
@@ -90,7 +92,115 @@ const App = () => {
                             error={errorMessage}
                         />
                     </Route>
-                </Switch>
+                </Switch>  
+                <Footer
+                    style={{
+                        backgroundColor: '#222222',
+                        width: '100vw',
+                        maxWidth: '100%',
+                        position: 'absolute',
+                        left: '0',
+                        right: '0',
+                        color: 'gray',
+                        borderRadius: '10px 10px 0 0'
+                    }}
+                    columns={[{
+                        title: 'Support',
+                        items: [
+                            {
+                                title: 'Contact Us',
+                                url: 'https://github.com/',
+                                style: {
+                                    color: 'white'
+                                }
+                            },
+                            {
+                                title: 'FAQ',
+                                url: 'https://instagram.com',
+                                openExternal: true,
+                                style: {
+                                    color: 'blue',
+                                },
+                            },
+                            {
+                                title: 'About Us',
+                                url: 'https://www.google.com/maps/place/Rruga+David+Selanicasi,+Vlor%C3%AB,+Albania/@40.4604079,19.4841174,18z/data=!3m1!4b1!4m5!3m4!1s0x134533dd32e5886b:0x8041d384594823a6!8m2!3d40.4605845!4d19.4853525',
+                                description: 'Address',
+                                openExternal: true,
+                                style: {
+                                    color: 'gray'
+                                }
+                            },
+                        ],
+                    },
+                    {
+                        title: 'Address',
+                        className: 'my-class-name',
+                        style: {
+                            color: 'red',
+                        },
+                        items: [
+                            {
+                                title: 'Ant Design Pro',
+                                url: 'https://pro.ant.design/',
+                                openExternal: true,
+                            },
+                            {
+                                title: 'Ant Design Mobile',
+                                url: 'https://mobile.ant.design/',
+                                openExternal: true,
+                            },
+                            {
+                                title: 'Kitchen',
+                                url: 'https://kitchen.alipay.com/',
+                                description: 'Sketch 工具集',
+                            },
+                        ],
+                    },
+                    {
+                        icon: (
+                            <img
+                                src="https://gw.alipayobjects.com/zos/rmsportal/nBVXkrFdWHxbZlmMbsaH.svg"
+                                alt="more products"
+                            />
+                        ),
+                        title: 'Social Media',
+                        items: [
+                            {
+                                icon: (
+                                    <img
+                                        src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png"
+                                        alt="twitter"
+                                    />
+                                ),
+                                title: 'Twitter',
+                                url: 'https://twitter.com',
+                                description: 'Follow Us',
+                                openExternal: true,
+                                style: {
+                                    color: 'gray'
+                                }
+                            },
+                            {
+                                icon: (
+                                    <img
+                                        src="https://cdn.worldvectorlogo.com/logos/instagram-2016-5.svg"
+                                        alt="instagram"
+                                    />
+                                ),
+                                title: 'Instagram',
+                                url: 'https://instagram.com',
+                                description: 'Follow Us',
+                                openExternal: true,
+                                style: {
+                                    color: 'gray'
+                                }
+                            },
+                        ],
+                    },
+                    ]}
+                    bottom="Copyright &copy; 2021 - Shoppocles"
+                />
             </div>
         </Router>
     )

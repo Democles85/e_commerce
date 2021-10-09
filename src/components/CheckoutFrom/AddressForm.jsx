@@ -25,28 +25,28 @@ const AddressForm = ({ checkoutToken, next }) => {
 
         setShippingCountries(countries);
         setShippingCountry(Object.keys(countries)[0]);
-    }
+    };
 
     const fetchSubdivisions = async (countryCode) => {
         const { subdivisions } = await commerce.services.localeListSubdivisions(countryCode);
 
         setShippingSubdivisions(subdivisions);
         setShippingSubdivision(Object.keys(subdivisions)[0]);
-    }
+    };
 
     const fetchShippingOptions = async (checkoutTokenId, country, region = null) => {
         const options = await commerce.checkout.getShippingOptions(checkoutTokenId, { country, region });
 
         setShippingOptions(options);
         setShippingOption(options[0].id);
-    }
+    };
 
     useEffect(() => {
         fetchShippingCountries(checkoutToken.id);
     }, []);
 
     useEffect(() => {
-        if(shippingCountry) fetchSubdivisions(shippingCountry);
+        if (shippingCountry) fetchSubdivisions(shippingCountry);
     }, [shippingCountry]);
 
     useEffect(() => {
@@ -57,7 +57,7 @@ const AddressForm = ({ checkoutToken, next }) => {
         <>
             <Typography variant="h6" gutterBottom>Shipping Address</Typography>
             <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit((data) => next({...data, shippingCountry, shippingSubdivision, shippingOption}))}>
+                <form onSubmit={methods.handleSubmit((data) => next({ ...data, shippingCountry, shippingSubdivision, shippingOption }))}>
                     <Grid container spacing={3}>
                         <FormInput name='firstName' label='First name' />
                         <FormInput name='lastName' label='Last name' />
@@ -82,7 +82,7 @@ const AddressForm = ({ checkoutToken, next }) => {
                                     <MenuItem key={subdivision.id} value={subdivision.id}>
                                         {subdivision.label}
                                     </MenuItem>
-                                ))}
+                                ))};
                             </Select>
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -92,19 +92,19 @@ const AddressForm = ({ checkoutToken, next }) => {
                                     <MenuItem key={option.id} value={option.id}>
                                         {option.label}
                                     </MenuItem>
-                                ))}
+                                ))};
                             </Select>
                         </Grid>
                     </Grid>
                     <br />
-                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                         <Button component={Link} to="/cart" variant="outlined">Back to Cart</Button>
                         <Button type="submit" variant="contained" color="primary">Next</Button>
                     </div>
                 </form>
             </FormProvider>
         </>
-    )
-}
+    );
+};
 
-export default AddressForm
+export default AddressForm;
