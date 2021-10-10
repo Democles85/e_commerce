@@ -135,25 +135,28 @@ const App = () => {
                     },
                     {
                         title: 'Address',
-                        className: 'my-class-name',
-                        style: {
-                            color: 'red',
-                        },
                         items: [
                             {
-                                title: 'Ant Design Pro',
+                                title: 'Class name',
                                 url: 'https://pro.ant.design/',
                                 openExternal: true,
+                                LinkComponent: 'span',
+                                style: {
+                                    color: 'white'
+                                }
                             },
                             {
-                                title: 'Ant Design Mobile',
+                                title: 'Class name',
                                 url: 'https://mobile.ant.design/',
                                 openExternal: true,
                             },
                             {
-                                title: 'Kitchen',
+                                title: 'Test',
                                 url: 'https://kitchen.alipay.com/',
-                                description: 'Sketch 工具集',
+                                description: 'Test Description',
+                                style: {
+                                    color: 'gray'
+                                }
                             },
                         ],
                     },

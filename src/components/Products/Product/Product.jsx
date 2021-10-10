@@ -1,33 +1,50 @@
-import React from 'react';
-import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, Button } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
+import useCollapse from 'react-collapsed';
 
 import useStyles from './styles';
 
 const Product = ({ product, onAddToCart }) => {
     const classes = useStyles();
     
+    const [isExpanded, setExpanded] = useState(false);
+    const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
+    
     return (
         <Card className={classes.root}>
             <CardMedia className={classes.media} image={product.media.source} tittle={product.name} />
             <CardContent>
                 <div className={classes.cardContent}>
-                    <Typography variant="h5" gutterBottom>
+                    <Typography gutterBottom className={classes.productName}>
                         {product.name}
                     </Typography>
-                    <Typography variant="h5">
+                    <Typography className={classes.productPrice}>
                         {product.price.formatted_with_symbol}
                     </Typography>
                 </div>
-                <Typography dangerouslySetInnerHTML={{ __html:product.description }} variant="body2" color="textSecondary"/>
+            </CardContent>
+            <CardContent>
+                <div>
+                    <Button className={classes.expandButton}
+                        {...getToggleProps({
+                            onClick: () => setExpanded((prevExpanded) => !prevExpanded),
+                        })}
+                    >
+                    {isExpanded ? 'Close Description' : 'Product Description'}
+                    </Button>
+                    <section {...getCollapseProps()}>
+                        <Typography dangerouslySetInnerHTML={{ __html: product.description }} variant="body2" color="textSecondary" />
+                    </section>
+                </div>
             </CardContent>
             <CardActions disableSpacing className={classes.cardActions}>
                 <IconButton aria-label="Add to Card" onClick={() => onAddToCart(product.id, 1)}>
-                    <AddShoppingCart/>
+                    <AddShoppingCart />
                 </IconButton>
             </CardActions>
         </Card>
     )
-}
+};
 
-export default Product
+export default Product;
