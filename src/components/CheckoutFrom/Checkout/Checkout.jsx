@@ -105,4 +105,8 @@ const Checkout = ({cart, order, onCaptureCheckout, error}) => {
     )
 }
 
-export default Checkout
+// "env": {
+//       "E_COMMERCE": false
+//     },
+
+export default Checkout;

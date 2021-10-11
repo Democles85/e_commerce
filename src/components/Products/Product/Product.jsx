@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, Button } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
 import useCollapse from 'react-collapsed';
+import Carousel from 'react-material-ui-carousel'
 
 import useStyles from './styles';
 

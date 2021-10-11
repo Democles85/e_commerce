@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from 'react';
+//Main Imports
+import React, { useState, useEffect } from 'react';
 import { commerce } from './lib/commerce';
 import { Products, Navbar, Cart, Checkout} from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+//imports for Footer
 import 'rc-footer/assets/index.css';
 import Footer from 'rc-footer';
 
@@ -67,7 +69,7 @@ const App = () => {
         fetchCart();
     }, []);
 
-    console.log(cart);
+    // console.log(cart);
 
     return (
         <Router>
@@ -102,7 +104,7 @@ const App = () => {
                         left: '0',
                         right: '0',
                         color: 'gray',
-                        borderRadius: '10px 10px 0 0'
+                        borderRadius: '10px 10px 0 0',
                     }}
                     columns={[{
                         title: 'Support',
